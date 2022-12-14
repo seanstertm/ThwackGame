@@ -8,7 +8,6 @@ namespace UserCode
     {
         [SerializeField] private GameObject ball;
         [SerializeField] private GameManager gameManager;
-        [SerializeField] private ThemeManager theme;
         private readonly List<GameObject> guideBalls = new();
         private Launcher launcher;
         private float time = 0.2f;
@@ -33,14 +32,16 @@ namespace UserCode
                 {
                     foreach (GameObject guideBall in guideBalls)
                     {
-                        guideBall.GetComponent<SpriteRenderer>().color = new Color(theme.CurrentTheme.Ball.r, theme.CurrentTheme.Ball.g, theme.CurrentTheme.Ball.b, 0.2f);
+                        SpriteRenderer spriteRenderer = guideBall.GetComponent<SpriteRenderer>();
+                        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
                     }
                 }
                 else
                 {
                     foreach (GameObject guideBall in guideBalls)
                     {
-                        guideBall.GetComponent<SpriteRenderer>().color = new Color(theme.CurrentTheme.Ball.r, theme.CurrentTheme.Ball.g, theme.CurrentTheme.Ball.b, 0.5f);
+                        SpriteRenderer spriteRenderer = guideBall.GetComponent<SpriteRenderer>();
+                        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
                     }
                 }
             }

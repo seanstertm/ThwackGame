@@ -15,13 +15,11 @@ namespace UserCode
         [SerializeField] private GameObject borders;
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject launcher;
-        [SerializeField] private ThemeManager theme;
 
         public void BeginGame()
         {
             game = true;
             borders.SetActive(true);
-            borders.GetComponent<SpriteRenderer>().color = theme.CurrentTheme.Border;
             borders.GetComponent<Animator>().Play("Border Enter");
         }
         // Callback BorderEntered() when animation ends
@@ -29,7 +27,6 @@ namespace UserCode
         public void BorderEntered()
         {
             bar.SetActive(true);
-            bar.GetComponent<SpriteRenderer>().color = theme.CurrentTheme.Background + new Color(0.1f, 0.1f, 0.1f);
             launcher.SetActive(true);
         }
     }

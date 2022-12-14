@@ -6,27 +6,22 @@ namespace UserCode
 {
     public class ThemeManager : MonoBehaviour
     {
-        public Theme CurrentTheme { get; private set; }
+        public Theme CurrentTheme { get; private set; } = new Theme(Color.black, Color.black, Color.black, new List<Color>());
         private readonly List<Theme> themes = new();
-        public enum THEME
-        {
-            classicLight,
-            classicDark
-        }
-
-
+        public bool colorChangeFlag = false;
+        
         public void SetTheme(int theme)
         {
             CurrentTheme = themes[theme];
             PlayerPrefs.SetInt("Theme", theme);
-            Camera.main.GetComponent<Camera>().backgroundColor = CurrentTheme.Background;
+            colorChangeFlag = !colorChangeFlag;
         }
 
         public void Start()
         {
             InitList();
 
-            SetTheme(PlayerPrefs.GetInt("Theme"));
+            SetTheme(PlayerPrefs.GetInt("Theme");
         }
 
         void InitList()

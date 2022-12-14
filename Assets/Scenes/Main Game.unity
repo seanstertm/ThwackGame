@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 20772715}
   m_Layer: 0
   m_Name: Theme Manager
-  m_TagString: Untagged
+  m_TagString: Theme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5228d30f3a47fc449d518fbef963331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorChangeFlag: 0
 --- !u!1 &360529528
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ GameObject:
   - component: {fileID: 360529531}
   - component: {fileID: 360529530}
   - component: {fileID: 360529532}
+  - component: {fileID: 360529533}
   m_Layer: 2
   m_Name: Bar
   m_TagString: Untagged
@@ -296,6 +298,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &360529533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360529528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce5c782ec1657f4e846d95b46dac7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 0
+  offset: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0}
+  Camera: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +324,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -380,6 +398,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce5c782ec1657f4e846d95b46dac7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 0
+  offset: {r: 0, g: 0, b: 0, a: 0}
+  Camera: 1
 --- !u!1 &1172169731
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +468,6 @@ MonoBehaviour:
   borders: {fileID: 1210365315}
   bar: {fileID: 360529528}
   launcher: {fileID: 2121616657}
-  theme: {fileID: 20772715}
 --- !u!1 &1210365315
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +482,7 @@ GameObject:
   - component: {fileID: 1210365320}
   - component: {fileID: 1210365322}
   - component: {fileID: 1210365323}
+  - component: {fileID: 1210365324}
   m_Layer: 6
   m_Name: Borders
   m_TagString: Untagged
@@ -606,6 +639,21 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1210365324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210365315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce5c782ec1657f4e846d95b46dac7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 1
+  offset: {r: 0, g: 0, b: 0, a: 0}
+  Camera: 0
 --- !u!1 &1247799216
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +700,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 3681815832464066672, guid: 6e301469c17864f40a874d1a4ca8f06a, type: 3}
   gameManager: {fileID: 1172169733}
-  theme: {fileID: 20772715}
 --- !u!1 &1528446443
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +780,6 @@ MonoBehaviour:
   bar: {fileID: 360529528}
   ball: {fileID: 5310990545749838664, guid: 5c50b380a1e8ad9419d9e67408c1c688, type: 3}
   paddle: {fileID: 1528446443}
-  theme: {fileID: 20772715}
 --- !u!1 &2142213243
 GameObject:
   m_ObjectHideFlags: 0

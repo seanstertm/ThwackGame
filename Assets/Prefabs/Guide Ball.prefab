@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1483368287762393627}
   - component: {fileID: 4661827080491701150}
   - component: {fileID: 1543488261935107162}
+  - component: {fileID: -4781697638900407637}
   m_Layer: 3
   m_Name: Guide Ball
   m_TagString: Untagged
@@ -97,3 +98,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30faced835693e140898704a69eda3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4781697638900407637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681815832464066672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce5c782ec1657f4e846d95b46dac7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 2
+  offset: {r: 0, g: 0, b: 0, a: 0}
+  Camera: 0

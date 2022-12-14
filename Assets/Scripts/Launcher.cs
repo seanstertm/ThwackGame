@@ -9,7 +9,6 @@ namespace UserCode
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject ball;
         [SerializeField] private GameObject paddle;
-        [SerializeField] private ThemeManager theme;
         private Vector2 initialTouch;
         public Vector2 InitialLaunch { get; private set; }
         public Vector2 DeltaTouch { get; private set; }
@@ -62,7 +61,6 @@ namespace UserCode
             GameObject newBall = Instantiate(ball, InitialLaunch, Quaternion.identity);
             newBall.transform.parent = gameObject.transform.parent;
             newBall.name = "Ball";
-            newBall.GetComponent<SpriteRenderer>().color = theme.CurrentTheme.Ball;
             newBall.GetComponent<Rigidbody2D>().velocity = direction * 9;
         }
 
