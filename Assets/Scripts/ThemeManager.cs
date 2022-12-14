@@ -21,7 +21,7 @@ namespace UserCode
         {
             InitList();
 
-            SetTheme(PlayerPrefs.GetInt("Theme");
+            SetTheme(PlayerPrefs.GetInt("Theme"));
         }
 
         void InitList()
