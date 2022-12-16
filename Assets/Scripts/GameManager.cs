@@ -15,11 +15,13 @@ namespace UserCode
         [SerializeField] private GameObject borders;
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject launcher;
+        [SerializeField] private GameObject menu;
 
         public void BeginGame()
         {
             game = true;
             borders.SetActive(true);
+            menu.SetActive(false);
             borders.GetComponent<Animator>().Play("Border Enter");
         }
         // Callback BorderEntered() when animation ends

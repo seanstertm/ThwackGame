@@ -15,11 +15,6 @@ namespace UserCode
                 return;
             }
 
-            if(!gameManager.game)
-            {
-                gameManager.BeginGame();
-            }
-
             spriteRenderer.enabled = true;
             gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
