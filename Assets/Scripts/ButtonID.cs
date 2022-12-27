@@ -1,7 +1,6 @@
-namespace UserCode
+using UnityEngine;
+
+public class ButtonID : MonoBehaviour
 {
-    public class ButtonID
-    {
-        public ButtonType buttonType;
-    }
+    public ButtonType buttonType;
 }
