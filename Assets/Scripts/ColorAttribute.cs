@@ -6,7 +6,6 @@ namespace UserCode
 {
     public class ColorAttribute : MonoBehaviour
     {
-        private ThemeManager theme;
         [SerializeField] private ColorType colorType;
         [SerializeField] private Color offset;
         [SerializeField] private bool Camera;
@@ -16,7 +15,6 @@ namespace UserCode
         private bool lastCheckFlag;
         void Start()
         {
-            theme = GameObject.FindGameObjectWithTag("Theme").GetComponent<ThemeManager>();
             if(Camera)
             {
                 cam = gameObject.GetComponent<Camera>();
@@ -28,12 +26,12 @@ namespace UserCode
                 spriteRenderer.color = ColorGet();
             }
 
-            lastCheckFlag = theme.colorChangeFlag;
+            lastCheckFlag = ThemeManager.colorChangeFlag;
         }
 
         void Update()
         {
-            if(lastCheckFlag != theme.colorChangeFlag)
+            if(lastCheckFlag != ThemeManager.colorChangeFlag)
             {
                 if (Camera)
                 {
@@ -52,12 +50,12 @@ namespace UserCode
             return colorType switch
             {
                 ColorType.Background => 
-                theme.
+                ThemeManager.
                 CurrentTheme.
                 Background,
-                ColorType.Accent => theme.CurrentTheme.Accent,
-                ColorType.Ball => theme.CurrentTheme.Ball,
-                ColorType.Blocks => theme.CurrentTheme.Blocks[0],
+                ColorType.Accent => ThemeManager.CurrentTheme.Accent,
+                ColorType.Ball => ThemeManager.CurrentTheme.Ball,
+                ColorType.Blocks => ThemeManager.CurrentTheme.Blocks[0],
                 _ => Color.black,
             } + offset;
         }
