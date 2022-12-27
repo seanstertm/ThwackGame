@@ -6,9 +6,9 @@ namespace UserCode
 {
     public class ThemeManager : MonoBehaviour
     {
-        public Theme CurrentTheme { get; private set; } = new Theme(Color.black, Color.black, Color.black, new List<Color>());
+        public static Theme CurrentTheme { get; private set; } = new Theme(Color.black, Color.black, Color.black, new List<Color>());
         private readonly List<Theme> themes = new();
-        public bool colorChangeFlag = false;
+        public static bool colorChangeFlag = false;
         
         public void SetTheme(int theme)
         {
