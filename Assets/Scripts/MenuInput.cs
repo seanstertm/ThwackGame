@@ -22,7 +22,6 @@ public class MenuInput : MonoBehaviour
             buttonInfo.Add((topRight, bottomLeft, buttonType));
         }
 
-        Debug.Log(buttonInfo[0]);
     }
 
     private (Vector3, Vector3) GetBounds(GameObject button)
