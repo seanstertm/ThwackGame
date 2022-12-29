@@ -9,6 +9,17 @@ namespace UserCode
         public static Theme CurrentTheme { get; private set; } = new Theme(Color.black, Color.black, Color.black, new List<Color>());
         private readonly List<Theme> themes = new();
         public static bool colorChangeFlag = false;
+
+        private static ThemeManager mainReference;
+
+        public static ThemeManager Main
+        {
+            get
+            {
+                return mainReference;
+            }
+            private set { }
+        }
         
         public void SetTheme(int theme)
         {
@@ -19,6 +30,8 @@ namespace UserCode
 
         public void Start()
         {
+            mainReference = gameObject.GetComponent<ThemeManager>();
+
             InitList();
 
             SetTheme(PlayerPrefs.GetInt("Theme"));

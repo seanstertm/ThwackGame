@@ -4,16 +4,9 @@ using UnityEngine;
 
 namespace UserCode
 {
-    public enum MenuState
-    {
-        home,
-        game,
-        paint
-    }
     public class GameManager : MonoBehaviour
     {
-        public bool game { get; private set; } = false;
-        public MenuState menuState = MenuState.home;
+        public bool Game { get; private set; } = false;
         public int paddleArmWidth = 1;
         public int foresight = 1;
         public int numBalls = 1;
@@ -37,12 +30,12 @@ namespace UserCode
             {
                 return mainReference;
             }
+            private set { }
         }
 
         public void BeginGame()
         {
-            menuState = MenuState.game;
-            game = true;
+            Game = true;
             borders.SetActive(true);
             menu.SetActive(false);
             borders.GetComponent<Animator>().Play("Border Enter");
