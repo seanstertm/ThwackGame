@@ -9,27 +9,17 @@ namespace UserCode {
         home,
         paint
     }
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private List<GameObject> buttons;
         private readonly List<(Vector3 topRight, Vector3 bottomLeft, MenuButton menuButton)> buttonInfo = new();
         [HideInInspector] public MenuLayer currentLayer = MenuLayer.home;
         private bool pressed = false;
 
-        private MenuManager mainReference;
 
-        public MenuManager Main
+        new private void Start()
         {
-            get
-            {
-                return mainReference;
-            }
-            private set { }
-        }
-
-        private void Start()
-        {
-            mainReference = gameObject.GetComponent<MenuManager>();
+            base.Start();
 
             foreach (GameObject button in buttons)
             {

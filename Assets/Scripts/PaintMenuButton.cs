@@ -10,7 +10,7 @@ namespace UserCode
         {
             Debug.Log("Paint button pressed");
 
-            ThemeManager.Main.SetTheme(0);
+            ThemeManager.Main.SetTheme(1);
         }
     }
 }

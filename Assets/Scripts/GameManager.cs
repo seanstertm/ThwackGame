@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UserCode
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
         public bool Game { get; private set; } = false;
         public int paddleArmWidth = 1;
@@ -17,20 +17,9 @@ namespace UserCode
         [SerializeField] private GameObject launcher;
         [SerializeField] private GameObject menu;
 
-        private static GameManager mainReference;
-
-        public void Start()
+        new private void Start()
         {
-            mainReference = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
-        }
-
-        public static GameManager Main 
-        {
-            get
-            {
-                return mainReference;
-            }
-            private set { }
+            base.Start();
         }
 
         public void BeginGame()

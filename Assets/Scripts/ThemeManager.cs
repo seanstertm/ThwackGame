@@ -4,22 +4,11 @@ using UnityEngine;
 
 namespace UserCode
 {
-    public class ThemeManager : MonoBehaviour
+    public class ThemeManager : Singleton<ThemeManager>
     {
         public static Theme CurrentTheme { get; private set; } = new Theme(Color.black, Color.black, Color.black, new List<Color>());
         private readonly List<Theme> themes = new();
         public static bool colorChangeFlag = false;
-
-        private static ThemeManager mainReference;
-
-        public static ThemeManager Main
-        {
-            get
-            {
-                return mainReference;
-            }
-            private set { }
-        }
         
         public void SetTheme(int theme)
         {
@@ -28,9 +17,9 @@ namespace UserCode
             colorChangeFlag = !colorChangeFlag;
         }
 
-        public void Start()
+        new public void Start()
         {
-            mainReference = gameObject.GetComponent<ThemeManager>();
+            base.Start();
 
             InitList();
 
