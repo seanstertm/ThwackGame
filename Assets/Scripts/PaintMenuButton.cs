@@ -6,11 +6,11 @@ namespace UserCode
 {
     public class PaintMenuButton : MenuButton
     {
+        [SerializeField] private GameObject paintMenu;
         public override void OnPress()
         {
-            Debug.Log("Paint button pressed");
-
-            ThemeManager.Main.SetTheme(1);
+            MenuManager.Main.currentLayer = MenuLayer.paint;
+            paintMenu.GetComponent<Animator>().Play("PaintMenuEnter");
         }
     }
 }

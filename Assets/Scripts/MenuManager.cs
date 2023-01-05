@@ -11,6 +11,8 @@ namespace UserCode {
     }
     public class MenuManager : Singleton<MenuManager>
     {
+        [SerializeField] private GameObject paintMenu;
+
         [SerializeField] private List<GameObject> buttons;
         private readonly List<(Vector3 topRight, Vector3 bottomLeft, MenuButton menuButton)> buttonInfo = new();
         [HideInInspector] public MenuLayer currentLayer = MenuLayer.home;
@@ -64,7 +66,19 @@ namespace UserCode {
                     return;
                 }
             }
-            GameManager.Main.BeginGame();
+
+            // If no buttons are hit, control will reach here
+
+            switch(currentLayer)
+            {
+                case MenuLayer.paint:
+                    paintMenu.GetComponent<Animator>().Play("PaintMenuExit");
+                    currentLayer = MenuLayer.home;
+                    break;
+                case MenuLayer.home:
+                    GameManager.Main.BeginGame();
+                    break;
+            }
         }
     }
 }
