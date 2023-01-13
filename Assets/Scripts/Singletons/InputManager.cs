@@ -5,7 +5,6 @@ namespace UserCode
     public class InputManager : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private GameManager gameManager;
         
         private void Update()
         {

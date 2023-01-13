@@ -7,7 +7,6 @@ namespace UserCode
     public class GuideBallManager : MonoBehaviour
     {
         [SerializeField] private GameObject ball;
-        [SerializeField] private GameManager gameManager;
         private readonly List<GameObject> guideBalls = new();
         private Launcher launcher;
         private float time = 0.2f;
@@ -71,7 +70,7 @@ namespace UserCode
             guideBall.name = "Guide Ball";
             guideBall.transform.parent = gameObject.transform;
             guideBall.transform.position = gameObject.transform.position;
-            StartCoroutine(BallTrack(guideBall, InterpretForesight(gameManager.foresight)));
+            StartCoroutine(BallTrack(guideBall, InterpretForesight(GameManager.Main.foresight)));
         }
 
         IEnumerator BallTrack(GameObject ball, float distance)
