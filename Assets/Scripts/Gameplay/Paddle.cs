@@ -9,8 +9,12 @@ namespace UserCode
         [SerializeField] private GameObject leftBar;
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject rightBar;
+        [SerializeField] private BoxCollider2D bc;
+        private bool firstCollision;
+        private int lifetime;
         public void Activate()
         {
+            firstCollision = true;
             gameObject.transform.position = new Vector3(Clamp(gameObject.transform.position.x, -3.5f + GameManager.Main.paddleArmWidth, 3.5f - GameManager.Main.paddleArmWidth), bar.transform.position.y, 0);
             StartCoroutine(FadeIn());
             StartCoroutine(PaddleGrow());
@@ -29,6 +33,7 @@ namespace UserCode
 
         public void SetPaddleSize(float scale)
         {
+            bc.size = new Vector2(2 * scale + 1, 0.37f);
             leftBar.transform.localPosition = new Vector3(-scale / 2 - 0.45f, 0, -1);
             leftBar.transform.localScale = new Vector3(scale, 2, 1);
             rightBar.transform.localPosition = new Vector3(scale / 2 + 0.45f, 0, -1);
@@ -40,6 +45,12 @@ namespace UserCode
             if (x > upperBound) return upperBound;
             if (x < lowerBound) return lowerBound;
             return x;
+        }
+
+        public void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(firstCollision) { firstCollision = false; return; }
+            Debug.Log("Collision");
         }
 
         IEnumerator FadeIn()
