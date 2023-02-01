@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace UserCode
 {
@@ -9,7 +10,9 @@ namespace UserCode
         [SerializeField] private ColorType colorType;
         [SerializeField] private Color offset;
         [SerializeField] private bool Camera;
+        [SerializeField] private bool Text;
         private Camera cam;
+        private TextMeshProUGUI text;
         private SpriteRenderer spriteRenderer;
 
         private bool lastCheckFlag;
@@ -20,6 +23,11 @@ namespace UserCode
                 cam = gameObject.GetComponent<Camera>();
                 cam.backgroundColor = ColorGet();
             } 
+            else if(Text)
+            {
+                text = gameObject.GetComponent<TextMeshProUGUI>();
+                text.color = ColorGet();
+            }
             else
             {
                 spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -36,6 +44,10 @@ namespace UserCode
                 if (Camera)
                 {
                     cam.backgroundColor = ColorGet();
+                }
+                else if (Text)
+                {
+                    text.color = ColorGet();
                 }
                 else
                 {

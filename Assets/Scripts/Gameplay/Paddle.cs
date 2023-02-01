@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace UserCode
 {
@@ -10,11 +11,14 @@ namespace UserCode
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject rightBar;
         [SerializeField] private BoxCollider2D bc;
+        [SerializeField] private TextMeshProUGUI text;
         private bool firstCollision;
         private int lifetime;
         public void Activate()
         {
             firstCollision = true;
+            lifetime = GameManager.Main.bounces;
+            text.text = lifetime.ToString();
             gameObject.transform.position = new Vector3(Clamp(gameObject.transform.position.x, -3.5f + GameManager.Main.paddleArmWidth, 3.5f - GameManager.Main.paddleArmWidth), bar.transform.position.y, 0);
             StartCoroutine(FadeIn());
             StartCoroutine(PaddleGrow());
@@ -50,7 +54,13 @@ namespace UserCode
         public void OnCollisionEnter2D(Collision2D collision)
         {
             if(firstCollision) { firstCollision = false; return; }
-            Debug.Log("Collision");
+            lifetime--;
+            text.text = lifetime.ToString();
+            if(lifetime == 0)
+            {
+                text.text = "";
+                Deactivate();
+            }
         }
 
         IEnumerator FadeIn()

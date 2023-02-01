@@ -90,7 +90,10 @@ namespace UserCode
             BallCount--;
             if(BallCount == 0)
             {
-                paddleRef.Deactivate();
+                if (paddleRef.gameObject.activeSelf)
+                {
+                    paddleRef.Deactivate();
+                }
             }
         }
     }
