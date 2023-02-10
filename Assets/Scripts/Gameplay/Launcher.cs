@@ -26,7 +26,7 @@ namespace UserCode
 
             if (Input.touches.Length > 0)
             {
-                if (touchBuffer) return;
+                if (touchBuffer || BallCount > 0) return;
                 if (Held)
                 {
                     Vector2 touch = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
