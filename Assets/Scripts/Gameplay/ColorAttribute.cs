@@ -61,10 +61,7 @@ namespace UserCode
         {
             return colorType switch
             {
-                ColorType.Background => 
-                ThemeManager.
-                CurrentTheme.
-                Background,
+                ColorType.Background => ThemeManager.CurrentTheme.Background,
                 ColorType.Accent => ThemeManager.CurrentTheme.Accent,
                 ColorType.Ball => ThemeManager.CurrentTheme.Ball,
                 ColorType.Blocks => ThemeManager.CurrentTheme.Blocks[0],
