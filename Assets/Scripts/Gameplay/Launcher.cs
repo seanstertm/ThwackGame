@@ -94,7 +94,7 @@ namespace UserCode
                 {
                     paddleRef.Deactivate();
                 }
-                BlockManager.Main.GenerateRow();
+                BlockManager.Main.GenerateRow(2);
             } 
         }
     }

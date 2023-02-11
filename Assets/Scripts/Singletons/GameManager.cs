@@ -35,7 +35,7 @@ namespace UserCode
         {
             bar.SetActive(true);
             launcher.SetActive(true);
-            BlockManager.Main.GenerateRow();
+            BlockManager.Main.GenerateRow(4);
         }
     }
 }

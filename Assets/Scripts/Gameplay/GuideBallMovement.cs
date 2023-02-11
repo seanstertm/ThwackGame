@@ -30,13 +30,21 @@ namespace UserCode
 
             RaycastHit2D hit = Physics2D.CircleCast(resultPosition, 0.3f, rayDirection, distance, LayerMask.GetMask("Walls"));
 
-            while (hit.collider != null)
+            if(hit.distance == 0 && hit.collider!= null)
+            {
+                return resultPosition;
+            }
+
+            int preventPermaLoop = 0;
+
+            while (hit.collider != null && preventPermaLoop < 10)
             {
                 resultPosition = hit.centroid;
                 distance -= hit.distance;
 
                 rayDirection = Quaternion.FromToRotation(-rayDirection, hit.normal) * hit.normal;
                 hit = Physics2D.CircleCast(resultPosition + rayDirection * 0.1f, 0.3f, rayDirection, distance, LayerMask.GetMask("Walls"));
+                preventPermaLoop--;
             }
 
             return resultPosition + rayDirection * distance;

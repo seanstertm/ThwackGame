@@ -10,7 +10,7 @@ namespace UserCode
         public int count = 1;
         public int[] weights = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
         public List<GameObject> children = new();
-        public void GenerateRow()
+        public void GenerateRow(int amount)
         {
             int[] newWeights = NewWeights(weights, count);
             for (int i = 0; i < newWeights.Length; i++)
@@ -20,11 +20,25 @@ namespace UserCode
                     GameObject block = Instantiate(blockTemplate, transform);
                     block.transform.localPosition = new Vector3(-3.5f + i, 7.15f, 0);
                     block.GetComponent<Brick>().SetText(newWeights[i] - 1);
+                    block.name = "Block";
                     children.Add(block);
                 }
             }
             weights = newWeights;
-            StartCoroutine(MoveDown(3f));
+            StartCoroutine(MoveDown(3f, amount));
+        }
+
+        public void GenerateThemeRow()
+        {
+            for(int i = 1; i < 9; i++)
+            {
+                GameObject block = Instantiate(blockTemplate, transform);
+                block.transform.localPosition = new Vector3(-4.5f + i, 7.15f, 0);
+                block.GetComponent<Brick>().SetText(i);
+                block.name = "Block";
+                children.Add(block);
+            }
+            StartCoroutine(MoveDown(3f, 1));
         }
         public int[] NewWeights(int[] prevWeights, int count)
         {
@@ -64,9 +78,10 @@ namespace UserCode
             Destroy(gameObject);
         }
 
-        IEnumerator MoveDown(float speed)
+        IEnumerator MoveDown(float speed, int amount)
         {
             float distance = 0;
+            bool lastRow = false;
             while (distance < 1)
             {
                 distance += Time.deltaTime * speed;
@@ -79,6 +94,21 @@ namespace UserCode
             foreach (GameObject child in children)
             {
                 child.transform.localPosition = new Vector3(child.transform.localPosition.x, child.transform.localPosition.y + distance - 1, 0);
+                if(Mathf.RoundToInt(child.transform.localPosition.y) == -7)
+                {
+                    Debug.Log("Game Over");
+                    lastRow = true;
+                }
+                if(Mathf.RoundToInt(child.transform.localPosition.y) == -6)
+                {
+                    lastRow = true;
+                }
+            }
+
+            amount--;
+            if(amount > 0 && !lastRow)
+            {
+                GenerateRow(amount);
             }
         }
     }

@@ -16,7 +16,12 @@ namespace UserCode
 
             if (GUILayout.Button("Generate Row"))
             {
-                blockManager.GenerateRow();
+                blockManager.GenerateRow(1);
+            }
+
+            if (GUILayout.Button("Generate Theme Test Row"))
+            {
+                blockManager.GenerateThemeRow();
             }
         }
     }
