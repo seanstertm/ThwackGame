@@ -28,9 +28,7 @@ namespace UserCode
 
             Vector2 rayDirection = launcher.DeltaTouch.normalized;
 
-            // Rework to Box Cast
-
-            RaycastHit2D hit = Physics2D.CircleCast(resultPosition, 0.3f, rayDirection, distance, LayerMask.GetMask("Walls"));
+            RaycastHit2D hit = Physics2D.BoxCast(resultPosition, new Vector2(0.6f, 0.6f), 0, rayDirection, distance, LayerMask.GetMask("Walls"));
 
             if(hit.distance == 0 && hit.collider!= null)
             {
@@ -45,7 +43,7 @@ namespace UserCode
                 distance -= hit.distance;
 
                 rayDirection = Quaternion.FromToRotation(-rayDirection, hit.normal) * hit.normal;
-                hit = Physics2D.CircleCast(resultPosition + rayDirection * 0.1f, 0.3f, rayDirection, distance, LayerMask.GetMask("Walls"));
+                hit = Physics2D.BoxCast(resultPosition + rayDirection * 0.1f, new Vector2(0.6f, 0.6f), 0, rayDirection, distance, LayerMask.GetMask("Walls"));
                 preventPermaLoop++;
             }
 
