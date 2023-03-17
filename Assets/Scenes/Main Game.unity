@@ -1501,6 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTemplate: {fileID: 6492820587968968345, guid: d4b476525c03c38479625f8853ae3285, type: 3}
+  border: {fileID: 1210365315}
   count: 3
   weights: 0100000001000000010000000100000001000000010000000100000001000000
   children: []
@@ -1604,6 +1605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d608337845aee044859abaa3d381cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Game: 0
   paddleArmWidth: 1
   foresight: 1
   numBalls: 1
@@ -1635,7 +1637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1210365316
 Transform:
   m_ObjectHideFlags: 0
@@ -2031,7 +2033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1483827293
 Transform:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ namespace UserCode
 
         private void Update()
         {
+            if(!GameManager.Main.Game) return;
             if (paddle.activeInHierarchy)
             {
                 touchBuffer = true;

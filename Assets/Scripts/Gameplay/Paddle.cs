@@ -30,6 +30,7 @@ namespace UserCode
 
         public void Update()
         {
+            if (!GameManager.Main.Game) return;
             if (Input.touches.Length == 0) return;
             gameObject.transform.position = new Vector3(Clamp(Camera.main.ScreenToWorldPoint(Input.touches[0].position).x, -3.5f + GameManager.Main.paddleArmWidth, 3.5f - GameManager.Main.paddleArmWidth), bar.transform.position.y, 0);
         }

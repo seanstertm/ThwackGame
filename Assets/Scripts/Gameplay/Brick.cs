@@ -9,7 +9,14 @@ namespace UserCode
     {
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private SpriteRenderer sr;
+        [SerializeField] private Animator x;
         private int count;
+
+        public void Blink()
+        {
+            x.Play("BrickXBlink");
+        }
+
         public void SetText(int number)
         {
             count = number;

@@ -18,6 +18,7 @@ namespace UserCode
         }
         private void Update()
         {
+            if (!GameManager.Main.Game) return;
             if (launcher.Held)
             {
                 if(firstTimePress)

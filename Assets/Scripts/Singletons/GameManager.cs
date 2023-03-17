@@ -6,7 +6,7 @@ namespace UserCode
 {
     public class GameManager : Singleton<GameManager>
     {
-        public bool Game { get; private set; } = false;
+        public bool Game = false;
 
         [Header("Stats")]
         public float paddleArmWidth = 1;

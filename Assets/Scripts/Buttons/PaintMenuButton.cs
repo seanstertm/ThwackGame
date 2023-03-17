@@ -10,6 +10,7 @@ namespace UserCode
         public override void OnPress()
         {
             MenuManager.Main.currentLayer = MenuLayer.paint;
+            paintMenu.SetActive(true);
             paintMenu.GetComponent<Animator>().Play("PaintMenuEnter");
         }
     }

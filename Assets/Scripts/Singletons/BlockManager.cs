@@ -7,6 +7,7 @@ namespace UserCode
     public class BlockManager : Singleton<BlockManager>
     {
         [SerializeField] private GameObject blockTemplate;
+        [SerializeField] private GameObject border;
         public int count = 1;
         public int[] weights = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
         public List<GameObject> children = new();
@@ -81,7 +82,7 @@ namespace UserCode
         IEnumerator MoveDown(float speed, int amount)
         {
             float distance = 0;
-            bool lastRow = false;
+            int specialCases = 0; // 1 = gameover; 2 = last row
             while (distance < 1)
             {
                 distance += Time.deltaTime * speed;
@@ -94,22 +95,29 @@ namespace UserCode
             foreach (GameObject child in children)
             {
                 child.transform.localPosition = new Vector3(child.transform.localPosition.x, child.transform.localPosition.y + distance - 1, 0);
-                if(Mathf.RoundToInt(child.transform.localPosition.y) == -7)
+                if (Mathf.RoundToInt(child.transform.localPosition.y) == -7)
                 {
-                    Debug.Log("Game Over");
-                    lastRow = true;
+                    child.GetComponent<Brick>().Blink();
+                    specialCases = 1;
+                    amount = 0;
                 }
-                if(Mathf.RoundToInt(child.transform.localPosition.y) == -6)
+                if (Mathf.RoundToInt(child.transform.localPosition.y) == -6)
                 {
-                    Debug.Log("Danger");
-                    lastRow = true;
+                    if (specialCases == 0) { specialCases = 2; }
+                    amount = 0;
                 }
             }
 
             amount--;
-            if(amount > 0 && !lastRow)
+            if(amount > 0)
             {
                 GenerateRow(amount);
+            }
+
+            if(specialCases == 1)
+            {
+                Debug.Log("Game Over");
+                GameManager.Main.Game = false;
             }
         }
     }
