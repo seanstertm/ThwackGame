@@ -1605,9 +1605,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddleArmWidth: 1
-  foresight: 5
+  foresight: 1
   numBalls: 1
   bounces: 1
+  guideBallSpeed: 2
+  guideBallGap: 0.5
   borders: {fileID: 1210365315}
   bar: {fileID: 360529528}
   launcher: {fileID: 2121616657}

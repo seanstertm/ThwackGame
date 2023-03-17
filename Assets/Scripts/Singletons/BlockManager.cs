@@ -101,6 +101,7 @@ namespace UserCode
                 }
                 if(Mathf.RoundToInt(child.transform.localPosition.y) == -6)
                 {
+                    Debug.Log("Danger");
                     lastRow = true;
                 }
             }

@@ -16,7 +16,7 @@ namespace UserCode
         public void Activate()
         {
             bc.enabled = false;
-            lifetime = GameManager.Main.bounces;
+            lifetime = (int)GameManager.Main.bounces;
             text.text = lifetime.ToString();
             gameObject.transform.position = new Vector3(Clamp(gameObject.transform.position.x, -3.5f + GameManager.Main.paddleArmWidth, 3.5f - GameManager.Main.paddleArmWidth), bar.transform.position.y, 0);
             StartCoroutine(FadeIn());

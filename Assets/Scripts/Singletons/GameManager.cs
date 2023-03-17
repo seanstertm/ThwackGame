@@ -7,11 +7,18 @@ namespace UserCode
     public class GameManager : Singleton<GameManager>
     {
         public bool Game { get; private set; } = false;
-        public int paddleArmWidth = 1;
-        public int foresight = 1;
-        public int numBalls = 1;
-        public int bounces = 1;
 
+        [Header("Stats")]
+        public float paddleArmWidth = 1;
+        public float foresight = 1;
+        public float numBalls = 1;
+        public float bounces = 1;
+
+        [Header("Guide Ball Options")]
+        public float guideBallSpeed = 3;
+        public float guideBallGap = 1;
+
+        [Header("")]
         [SerializeField] private GameObject borders;
         [SerializeField] private GameObject bar;
         [SerializeField] private GameObject launcher;

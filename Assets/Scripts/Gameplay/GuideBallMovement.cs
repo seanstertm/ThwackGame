@@ -7,7 +7,7 @@ namespace UserCode
     public class GuideBallMovement : MonoBehaviour
     {
         private Launcher launcher;
-        private float timeAlive = 0;
+        public float distanceTravelled = 0;
 
         private void Start()
         {
@@ -15,11 +15,16 @@ namespace UserCode
         }
         private void Update()
         {
-            timeAlive += Time.deltaTime;
+            if (distanceTravelled > GameManager.Main.foresight)
+            {
+                distanceTravelled = 0;
+            }
+
+            distanceTravelled += Time.deltaTime * GameManager.Main.guideBallSpeed;
         }
         private void LateUpdate()
         {
-            transform.position = SimulateBounces(3 * timeAlive);
+            transform.position = SimulateBounces(distanceTravelled);
         }
 
         private Vector2 SimulateBounces(float distance)

@@ -57,7 +57,7 @@ namespace UserCode
                 touchBuffer = false;
                 if (validTouch)
                 {
-                    StartCoroutine(LaunchBalls(DeltaTouch * 3, GameManager.Main.numBalls));
+                    StartCoroutine(LaunchBalls(DeltaTouch * 3, (int)GameManager.Main.numBalls));
                 }
                 validTouch = false;
                 DeltaTouch = new Vector2(0, 0);
