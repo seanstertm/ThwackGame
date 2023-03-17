@@ -12,11 +12,10 @@ namespace UserCode
         [SerializeField] private GameObject rightBar;
         [SerializeField] private BoxCollider2D bc;
         [SerializeField] private TextMeshProUGUI text;
-        private bool firstCollision;
         private int lifetime;
         public void Activate()
         {
-            firstCollision = true;
+            bc.enabled = false;
             lifetime = GameManager.Main.bounces;
             text.text = lifetime.ToString();
             gameObject.transform.position = new Vector3(Clamp(gameObject.transform.position.x, -3.5f + GameManager.Main.paddleArmWidth, 3.5f - GameManager.Main.paddleArmWidth), bar.transform.position.y, 0);
@@ -53,7 +52,6 @@ namespace UserCode
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            if(firstCollision) { firstCollision = false; return; }
             lifetime--;
             text.text = lifetime.ToString();
             if(lifetime == 0)
@@ -106,6 +104,7 @@ namespace UserCode
                 SetPaddleSize(size);
                 yield return null;
             }
+            bc.enabled = true;
             SetPaddleSize(GameManager.Main.paddleArmWidth);
         }
     }

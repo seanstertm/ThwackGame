@@ -10,6 +10,7 @@ namespace UserCode
         [SerializeField] private GameObject paddle;
         [SerializeField] private Paddle paddleRef;
         private bool touchBuffer = false;
+        public bool validTouch = false;
         private Vector2 initialTouch;
         public Vector2 InitialLaunch { get; private set; }
         public Vector2 DeltaTouch { get; private set; }
@@ -27,6 +28,7 @@ namespace UserCode
             if (Input.touches.Length > 0)
             {
                 if (touchBuffer || BallCount > 0) return;
+                validTouch = false;
                 if (Held)
                 {
                     Vector2 touch = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
@@ -34,6 +36,12 @@ namespace UserCode
                     if (DeltaTouch.y < 0)
                     {
                         DeltaTouch *= -1;
+                    }
+
+                    float angle = Vector2.SignedAngle(Vector2.right, DeltaTouch);
+                    if (DeltaTouch.y != 0 && DeltaTouch.magnitude > 1 && angle > 20f && angle < 160f)
+                    {
+                        validTouch = true;
                     }
                 }
                 else
@@ -47,10 +55,11 @@ namespace UserCode
             else
             {
                 touchBuffer = false;
-                if (Held && DeltaTouch.y != 0 && DeltaTouch.magnitude > 1)
+                if (validTouch)
                 {
                     StartCoroutine(LaunchBalls(DeltaTouch * 3, GameManager.Main.numBalls));
                 }
+                validTouch = false;
                 DeltaTouch = new Vector2(0, 0);
                 Held = false;
             }

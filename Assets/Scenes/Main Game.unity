@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddleArmWidth: 1
-  foresight: 1
+  foresight: 5
   numBalls: 1
   bounces: 1
   borders: {fileID: 1210365315}
@@ -2561,6 +2561,7 @@ MonoBehaviour:
   ball: {fileID: 5310990545749838664, guid: 5c50b380a1e8ad9419d9e67408c1c688, type: 3}
   paddle: {fileID: 1528446443}
   paddleRef: {fileID: 1528446446}
+  validTouch: 0
 --- !u!1 &2142213243
 GameObject:
   m_ObjectHideFlags: 0

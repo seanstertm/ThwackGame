@@ -26,8 +26,7 @@ namespace UserCode
                 }
                 time += Time.deltaTime;
 
-
-                if (launcher.DeltaTouch.magnitude < 1)
+                if (!launcher.validTouch)
                 {
                     foreach (GameObject guideBall in guideBalls)
                     {
