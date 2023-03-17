@@ -68,7 +68,7 @@ namespace UserCode
             for(int i = 0; i < GameManager.Main.foresight / GameManager.Main.guideBallGap; i++)
             {
                 CreateGuideBall(i);
-            } 
+            }
         }
 
         private void CreateGuideBall(int number)
